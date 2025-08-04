@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  {% load static %}
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevBook - تسجيل الدخول </title>
+  <link rel="stylesheet" href="{% static 'plugins/cssuser/styleuser.css' %}">
+  <link rel="icon" href="{% static 'dist/img/images/icons/favicon.ico' %}" type="favicon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h2> مرحباً بك في DevBook</h2>
+      <form method="POST">
+          {% csrf_token %}
+        {{ form.as_p }}
+        <div class="input-group">
+          <label for="username">اسم المستخدم</label>
+          <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم">
+          <span class="error-message" id="username-error"></span>
+        </div>
+        <div class="input-group">
+          <label for="password">كلمة المرور</label>
+          <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور">
+          <span class="password-toggle" onclick="togglePasswordVisibility()">👁️</span>
+          <span class="error-message" id="password-error"></span>
+        </div>
+       
+        <button type="submit" style="font-family: 'Cairo', sans-serif;" onclick="validateForm(event)">تسجيل الدخول</button>
+      </form>
+      <div class="signup-link">
+        ليس لديك حساب؟ <a href="#">إنشاء حساب جديد</a>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'plugins/mainjs/mainuser.js' %}"></script>
+</body>
+</html>
+<style>
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("{% static 'dist/img/images/back.jpg' %}");
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  direction: rtl; 
+}
+</style>
